@@ -21,13 +21,12 @@ void swap_ints(int *a, int *b)
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j, min;
-	int flag;
+
 	/* Is size < 2 do nothing */
 	if (size < 2)
 		return;
 	for (i = 0; i < size - 1; i++)
 	{
-		flag = 0;
 		min = i;
 		for (j = i + 1; j < size; j++)
 		{
@@ -36,12 +35,10 @@ void selection_sort(int *array, size_t size)
 				min = j;
 			}
 		}
-		if (min != j)
+		if (min != i)
 		{
 			swap_ints(&array[i], &array[min]);
-			flag = 1;
-		}
-		if (flag == 1)
 			print_array(array, size);
+		}
 	}
 }
