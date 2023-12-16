@@ -6,11 +6,11 @@
  */
 void swap_ints(int *a, int *b)
 {
-int tmp;
+	int tmp;
 
-tmp = *a;
-*a = *b;
-*b = tmp;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 /**
@@ -20,24 +20,28 @@ tmp = *a;
  */
 void selection_sort(int *array, size_t size)
 {
-size_t i, j, min;
-int flag;
-if (size < 2)
-return;
-for (i = 0; i < size - 1; i++)
-{
-flag = 0;
-min = i;
-for (j = i + 1; j < size ; j++)
-{
-if (array[j] < array[min])
-{
-swap_ints(&array[j], &array[min]);
-print_array(array, size);
-flag = 1;
-}
-}
-if (flag == 0)
-break;
-}
+	size_t i, j, min;
+	int flag;
+	/* Is size < 2 do nothing */
+	if (size < 2)
+		return;
+	for (i = 0; i < size - 1; i++)
+	{
+		flag = 0;
+		min = i;
+		for (j = i + 1; j < size; j++)
+		{
+			if (array[j] < array[min])
+			{
+				min = j;
+			}
+		}
+		if (min != j)
+		{
+			swap_ints(&array[i], &array[min]);
+			flag = 1;
+		}
+		if (flag == 1)
+			print_array(array, size);
+	}
 }
