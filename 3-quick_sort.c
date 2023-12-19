@@ -17,9 +17,10 @@ void swap_ints(int *a, int *b)
  * @array: array
  * @low: lower bound (left side)
  * @high: upper bound (right side)
+ * @size: size of array
  * Return: index of pivot
  */
-int partition(int *array, int low, int high)
+int partition(int *array, size_t size, int low, int high)
 {
 	int pivot, j, i;
 
@@ -32,12 +33,12 @@ int partition(int *array, int low, int high)
 		{
 			i++;
 			swap_ints(&array[i], &array[j]);
-			/* print_array(array, high + 1);*/
+			print_array(array, size);
 		}
 	}
 
 	swap_ints(&array[i + 1], &array[high]);
-	print_array(array, high + 1);
+	print_array(array, size);
 	return (i + 1);
 }
 /**
@@ -54,7 +55,7 @@ void quick_sort(int *array, size_t size)
 	if (low < high)
 	{
 		/* Partition array and get the pivot index */
-		location = partition(array, low, high);
+		location = partition(array, size, low, high);
 		/* Sort the two partitions */
 		quick_sort(array, (location));
 		quick_sort(array + location + 1, (size - location - 1));
