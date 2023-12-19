@@ -49,8 +49,8 @@ void lumoto_sort(int *array, size_t size, int left, int right)
 		/* locationition array and get the pivot index */
 		location = partition(array, size, left, right);
 		/* Sort the two partition */
-		lomuto_sort(array, size, left, location - 1);
-		lomuto_sort(array, size, location + 1, right);
+		lumoto_sort(array, size, left, location - 1);
+		lumoto_sort(array, size, location + 1, right);
 	}
 }
 /**
@@ -60,5 +60,5 @@ void lumoto_sort(int *array, size_t size, int left, int right)
  */
 void quick_sort(int *array, size_t size)
 {
-lumoto_sort(array, size, 0, size - 1)
+lumoto_sort(array, size, 0, size - 1);
 }
