@@ -13,7 +13,7 @@ void swap_ints(int *a, int *b)
 	*b = tmp;
 }
 /**
- * locationition - Divides array into two locationitions
+ * partition - Divides array into two locationitions
  * @array: array
  * @low: lower bound (left side)
  * @high: upper bound (right side)
@@ -33,16 +33,23 @@ int partition(int *array, size_t size, int low, int high)
 		{
 			i++;
 			swap_ints(&array[i], &array[j]);
-			print_array(array, size);	
+			print_array(array, size);
 		}
 	}
-	if (array[i+1] > pivot)
+	if (array[i + 1] > pivot)
 	{
 	swap_ints(&array[i + 1], &array[high]);
 	print_array(array, size);
 	}
 	return (i + 1);
 }
+/**
+ * lumoto_sort - quicksort algorithm through recursion.
+ * @array: An array of integers to sort.
+ * @size: The size of the array.
+ * @left: The starting index of the array partition to order.
+ * @right: The ending index of the array partition to order.
+*/
 void lumoto_sort(int *array, size_t size, int left, int right)
 {
 	int location;
@@ -63,7 +70,7 @@ void lumoto_sort(int *array, size_t size, int left, int right)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (size < 2)
+	if (array == NULL || size < 2)
 		return;
 
 	lumoto_sort(array, size, 0, size - 1);
