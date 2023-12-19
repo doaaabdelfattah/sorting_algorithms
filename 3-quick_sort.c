@@ -32,12 +32,15 @@ int partition(int *array, size_t size, int low, int high)
 		if (array[j] <= pivot)
 		{
 			i++;
-			print_array(array, size);
-			swap_ints(&array[i], &array[j]);	
+			swap_ints(&array[i], &array[j]);
+			print_array(array, size);	
 		}
 	}
-	print_array(array, size);
+	if (array[i+1] > pivot)
+	{
 	swap_ints(&array[i + 1], &array[high]);
+	print_array(array, size);
+	}
 	return (i + 1);
 }
 void lumoto_sort(int *array, size_t size, int left, int right)
@@ -60,5 +63,8 @@ void lumoto_sort(int *array, size_t size, int left, int right)
  */
 void quick_sort(int *array, size_t size)
 {
-lumoto_sort(array, size, 0, size - 1);
+	if (size < 2)
+		return;
+
+	lumoto_sort(array, size, 0, size - 1);
 }
