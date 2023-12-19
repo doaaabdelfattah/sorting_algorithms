@@ -13,7 +13,7 @@ void swap_ints(int *a, int *b)
 	*b = tmp;
 }
 /**
- * partition - Divides array into two partitions
+ * locationition - Divides array into two locationitions
  * @array: array
  * @low: lower bound (left side)
  * @high: upper bound (right side)
@@ -33,14 +33,25 @@ int partition(int *array, size_t size, int low, int high)
 		{
 			i++;
 			print_array(array, size);
-			swap_ints(&array[i], &array[j]);
-			
+			swap_ints(&array[i], &array[j]);	
 		}
 	}
 	print_array(array, size);
 	swap_ints(&array[i + 1], &array[high]);
-	
 	return (i + 1);
+}
+void lumoto_sort(int *array, size_t size, int left, int right)
+{
+	int location;
+
+	if (right - left > 0)
+	{
+		/* locationition array and get the pivot index */
+		location = partition(array, size, left, right);
+		/* Sort the two partition */
+		lomuto_sort(array, size, left, location - 1);
+		lomuto_sort(array, size, location + 1, right);
+	}
 }
 /**
  * quick_sort - sort array using quick sort alorithm
@@ -49,16 +60,5 @@ int partition(int *array, size_t size, int low, int high)
  */
 void quick_sort(int *array, size_t size)
 {
-	int low, high, location;
-
-	low = 0;
-	high = size - 1;
-	if (low < high)
-	{
-		/* Partition array and get the pivot index */
-		location = partition(array, size, low, high);
-		/* Sort the two partitions */
-		quick_sort(array, (location));
-		quick_sort(array + location + 1, (size - location - 1));
-	}
+lumoto_sort(array, size, 0, size - 1)
 }
